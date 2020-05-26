@@ -72,7 +72,13 @@
     }
 
     async function getUserProfile() {
+      try{
       const profile = await liff.getProfile();
+    }
+    catch(error)
+    {
+       alert("Login first");
+    }
       document.getElementById("pictureUrl").src = profile.pictureUrl;
       document.getElementById("userId").append(profile.userId);
       document.getElementById("statusMessage").append(profile.statusMessage);
