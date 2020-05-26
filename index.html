@@ -42,7 +42,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,18 +75,39 @@
     }
 
     function getEnvironment() {
+
+      //Know that open liff through andriod, ios, or website
+      document.getElementById("os").append(liff.getOs());
+
+      //Know the default language of client
+      document.getElementById("language").append(liff.getLanguage());
+
+      //Know the liff version sdk
+      document.getElementById("version").append(liff.getVersion());
+
+      //Know the temporary access token use to verify in backend and security
+      document.getElementById("accessToken").append(liff.getAccessToken());
+
+      //Check that open website through Line or exernal browser (True if open  on Line)
+      document.getElementById("isInClient").append(liff.isInClient());
+
+      if(liff.isInClient())
+        alert("Open through Line application");
+      else
+        alert("Open through External website application");
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      // alert("LINE Developers x Skooldio")
+      await liff.init({ liffId: "1654268106-m5pjlNb3" })
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
     }
-    main()
+
+    main();
   </script>
 </body>
 </html>
