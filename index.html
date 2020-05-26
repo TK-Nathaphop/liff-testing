@@ -92,16 +92,19 @@
       document.getElementById("isInClient").append(liff.isInClient());
 
       if(liff.isInClient())
-        alert("Open through Line application");
-      else
-        alert("Open through External website application");
+        document.getElementById("btnLogOut").style.display = "none";
+      else{
+        document.getElementById("btnMsg").style.display = "none";
+        document.getElementById("btnScanCode").style.display = "none";
+        document.getElementById("btnClose").style.display = "none";
+      }
     }
 
     async function main() {
       // alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1654268106-m5pjlNb3" });
       getEnvironment();
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
